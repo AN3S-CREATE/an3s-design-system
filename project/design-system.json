@@ -1,0 +1,140 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-09-25T11:49:18Z"
+  },
+  "title": "AN3S",
+  "namespace": "AN3S",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18"
+    },
+    {
+      "name": "react-dom",
+      "version": "18"
+    }
+  ],
+  "sections": {},
+  "groups": [
+    "Logos",
+    "Icons",
+    "Imagery"
+  ],
+  "assetGroups": {
+    "Logos": {
+      "name": "Logos",
+      "tile": "l",
+      "order": [
+        "an3s-wordmark.png",
+        "an3s-wordmark-on-space.png"
+      ],
+      "files": {
+        "an3s-wordmark.png": {
+          "name": "an3s-wordmark.png",
+          "blob": "82558ef4f933afb2a49c7aa85ed9121d",
+          "size": 66534,
+          "type": "image/png"
+        },
+        "an3s-wordmark-on-space.png": {
+          "name": "an3s-wordmark-on-space.png",
+          "blob": "e540877ae32a9c968173006ba981a74a",
+          "size": 52588,
+          "type": "image/png"
+        }
+      }
+    },
+    "Icons": {
+      "name": "Icons",
+      "tile": "s",
+      "order": [
+        "ai-systems.svg",
+        "business-growth.svg",
+        "web-app-development.svg",
+        "experimental-marketing.svg",
+        "brand-strategy.svg",
+        "3d-virtualization.svg",
+        "sales-leadership.svg",
+        "innovation-mentorship.svg"
+      ],
+      "files": {
+        "ai-systems.svg": {
+          "name": "ai-systems.svg",
+          "blob": "40f50e37a9d190c588f4fbc3e771e8fa",
+          "size": 1415,
+          "type": "image/svg+xml"
+        },
+        "business-growth.svg": {
+          "name": "business-growth.svg",
+          "blob": "4010ffbac16d36e8c9be21f7f20b54ee",
+          "size": 897,
+          "type": "image/svg+xml"
+        },
+        "web-app-development.svg": {
+          "name": "web-app-development.svg",
+          "blob": "cf24d71203541c6580bd6dc28cdf9b47",
+          "size": 743,
+          "type": "image/svg+xml"
+        },
+        "experimental-marketing.svg": {
+          "name": "experimental-marketing.svg",
+          "blob": "b139624ecd6f7fd1f06260b674aa245f",
+          "size": 894,
+          "type": "image/svg+xml"
+        },
+        "brand-strategy.svg": {
+          "name": "brand-strategy.svg",
+          "blob": "adb764d3dbdc4cbdac2e2cacfa20bd3e",
+          "size": 870,
+          "type": "image/svg+xml"
+        },
+        "3d-virtualization.svg": {
+          "name": "3d-virtualization.svg",
+          "blob": "295d2823433af6c075900e50e491f249",
+          "size": 776,
+          "type": "image/svg+xml"
+        },
+        "sales-leadership.svg": {
+          "name": "sales-leadership.svg",
+          "blob": "463a94438f01d0543e5e2f8e2618e833",
+          "size": 967,
+          "type": "image/svg+xml"
+        },
+        "innovation-mentorship.svg": {
+          "name": "innovation-mentorship.svg",
+          "blob": "1cb4fe9fc1154074fab93fb0bd6787a8",
+          "size": 1104,
+          "type": "image/svg+xml"
+        }
+      }
+    },
+    "Imagery": {
+      "name": "Imagery",
+      "tile": "l",
+      "order": [
+        "an3s-key-visual.webp"
+      ],
+      "files": {
+        "an3s-key-visual.webp": {
+          "name": "an3s-key-visual.webp",
+          "blob": "60ad7c234a43c30dc761ecda93df9c01",
+          "size": 260462,
+          "type": "image/webp"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "Andries Liebenberg",
+    "at": "2026-09-25T11:49:18Z",
+    "via": "Claude Code",
+    "note": "Built the AN3S system from the key visual: Neon Night tokens, Montserrat type scale, 12 components, wordmark, icons and cover."
+  }
+}

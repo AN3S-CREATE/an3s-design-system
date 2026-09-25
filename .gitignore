@@ -1,0 +1,4 @@
+# OS clutter (thumbnail caches appear in image folders)
+Thumbs.db
+desktop.ini
+.DS_Store

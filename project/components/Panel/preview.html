@@ -1,0 +1,31 @@
+<!-- @dsCard group="Surfaces" height=400 subtitle="Awards (pink) and Core Work (blue), as on the key visual" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Panel — preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+<style>
+  body { background: var(--deep-space); }
+  .stage { box-sizing: border-box; padding: var(--space-5); display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-5) var(--space-3); align-items: stretch; }
+  .stage .an3s-panel { display: flex; flex-direction: column; justify-content: center; }
+</style>
+</head>
+<body>
+<div id="root" class="stage"></div>
+<script>
+  var A = window.AN3S, h = React.createElement;
+  var awards = [
+    { name: 'Africa CEO Forum Awards' },
+    { name: 'Young Entrepreneur of the Year', detail: 'YE Awards 2019' },
+    { name: 'EY Entrepreneur Of The Year' },
+    { name: 'BCX Digital Innovation Awards' }
+  ];
+  var work = A.ServiceGrid.defaultItems.slice(0, 4);
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(A.Panel, { label: 'Awards', tone: 'pink' }, h(A.AwardWall, { items: awards, columns: 2 })),
+    h(A.Panel, { label: 'Core Work', tone: 'blue' }, h(A.ServiceGrid, { items: work, columns: 2 }))
+  ));
+</script>
+</body>
+</html>

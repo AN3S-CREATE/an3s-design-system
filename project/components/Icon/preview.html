@@ -1,0 +1,35 @@
+<!-- @dsCard group="Content" height=200 subtitle="48px with glow; 20px inline without" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Icon — preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+<style>
+  body { background: var(--deep-space); }
+  .stage { box-sizing: border-box; padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-5); }
+  .row { display: flex; flex-wrap: wrap; gap: var(--space-5); }
+  .inline { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-5); margin: 0; color: var(--ink-soft); }
+  .inline span { display: inline-flex; align-items: center; gap: var(--space-2); }
+</style>
+</head>
+<body>
+<div id="root" class="stage"></div>
+<script>
+  var A = window.AN3S, h = React.createElement;
+  var titles = {
+    'ai-systems': 'AI Systems & Automation', 'business-growth': 'Business Growth',
+    'web-app-development': 'Web & App Development', 'experimental-marketing': 'Experimental Marketing',
+    'brand-strategy': 'Brand Strategy', '3d-virtualization': '3D Virtualization & Events',
+    'sales-leadership': 'Sales Leadership', 'innovation-mentorship': 'Innovation & Mentorship'
+  };
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h('div', { className: 'row' }, A.Icon.names.map(function (n) { return h(A.Icon, { key: n, name: n, title: titles[n] }); })),
+    h('p', { className: 'inline body' },
+      h('span', null, h(A.Icon, { name: 'ai-systems', size: 20, glow: false }), 'AI Systems & Automation'),
+      h('span', null, h(A.Icon, { name: 'web-app-development', size: 20, glow: false }), 'Web & App Development'),
+      h('span', null, h(A.Icon, { name: 'innovation-mentorship', size: 20, glow: false }), 'Innovation & Mentorship'))
+  ));
+</script>
+</body>
+</html>

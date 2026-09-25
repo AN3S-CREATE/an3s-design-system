@@ -1,0 +1,54 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AN3S</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap">
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--deep-space); color: var(--ink); font-family: var(--font-sans); overflow: hidden; }
+  .cover { position: relative; height: 288px; overflow: hidden; }
+  /* the composition: a 480-wide box on the right half of the 960 layout, clear of the name */
+  .art { position: absolute; top: 0; left: 480px; width: 480px; height: 288px; overflow: hidden; }
+  .art svg { display: block; width: 480px; height: 288px; }
+  .pink { fill: var(--pink); }
+  .cyan { fill: var(--cyan); }
+  .blue { fill: var(--blue); }
+  .violet { fill: var(--violet); }
+  .blk { rx: var(--radius-lg); }
+  .tab { rx: var(--radius-md); }
+  .ring { fill: none; stroke: var(--deep-space); stroke-width: 2; }
+  /* name and tagline in flow, pinned to the bottom-left of the ground */
+  .words { position: absolute; left: var(--space-6); bottom: var(--space-6); max-width: 440px; }
+  .name { margin: 0; font-size: 120px; line-height: .92; font-weight: 800; letter-spacing: -0.01em; color: var(--ink); }
+  .tag { margin: var(--space-2) 0 0 6px; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink-muted); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  blocks      pink 120×288 bled off the top, the lead pole (the "3") · cyan 96×72, the answer (the "S") · blue 344×144 bleeding off the right, the panel edges and smoke · violet 80×24 tab astride the blue slab's top edge, the hue that only lives in between — ≈31% of 960×288
+  arrangement the key visual's lower half: pink on the left, blue on the right, a tab label notched into the right-hand panel's top edge
+  pattern     halo arcs, from "one Halo per composition, behind its main subject": four half-rings in the ground colour cut into the blue slab, rising from its bottom edge under the tab
+  scales      sides in space-2 / space-4 / space-5 multiples; gutters space-4; ring pitch space-6 from a space-2 multiple; corners radius-lg, tab radius-md; 2px strokes like every neon edge
+-->
+<rect class="pink blk" x="24" y="-24" width="120" height="288" rx="18"/>
+<rect class="cyan blk" x="160" y="32" width="96" height="72" rx="18"/>
+<rect class="blue blk" x="160" y="120" width="344" height="144" rx="18"/>
+<path class="ring" d="M292 264A40 40 0 0 1 372 264"/>
+<path class="ring" d="M260 264A72 72 0 0 1 404 264"/>
+<path class="ring" d="M228 264A104 104 0 0 1 436 264"/>
+<path class="ring" d="M196 264A136 136 0 0 1 468 264"/>
+<rect class="violet tab" x="292" y="108" width="80" height="24" rx="10"/>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">AN3S</h1>
+<p class="tag">Strategy, Chaos, and Experimental Tech.</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Actions" height=110 -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Button — preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+<style>
+  body { background: var(--deep-space); }
+  .stage { box-sizing: border-box; padding: var(--space-6) var(--space-5); display: flex; flex-wrap: wrap; gap: var(--space-4); align-items: center; }
+</style>
+</head>
+<body>
+<div id="root" class="stage"></div>
+<script>
+  var A = window.AN3S, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(React.Fragment, null,
+    h(A.Button, null, 'Book a strategy session'),
+    h(A.Button, { variant: 'outline' }, 'See the core work'),
+    h(A.Button, { variant: 'outline', disabled: true }, 'Sessions full')
+  ));
+</script>
+</body>
+</html>

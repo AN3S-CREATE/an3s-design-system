@@ -1,0 +1,24 @@
+<!-- @dsCard group="Typography" height=170 subtitle="The descriptor from the key visual" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Statement — preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+<style>
+  body { background: var(--deep-space); }
+  .stage { box-sizing: border-box; padding: var(--space-6) var(--space-5); }
+  .stage .an3s-statement { max-width: 560px; }
+</style>
+</head>
+<body>
+<div id="root" class="stage"></div>
+<script>
+  var A = window.AN3S, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(A.Statement, null,
+    h(A.Highlight, { tone: 'pink' }, 'Strategic'), ' Development & ',
+    h(A.Highlight, { tone: 'cyan' }, 'Growth Advisor'), ' for Intelligent Businesses'
+  ));
+</script>
+</body>
+</html>

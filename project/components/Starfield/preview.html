@@ -1,0 +1,33 @@
+<!-- @dsCard group="Surfaces" height=620 subtitle="With the right-hand column of the key visual set over it" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Starfield — preview</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap">
+<style>
+  body { background: var(--deep-space); }
+  .stage { padding: 0; }
+  .hero { box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: var(--space-5); padding: var(--space-7) var(--space-5); text-align: center; }
+  .hero .an3s-eyebrow { width: 100%; max-width: 420px; }
+  .hero .an3s-statement { max-width: 560px; }
+  .mark { display: block; width: 240px; max-width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<div id="root" class="stage"></div>
+<script>
+  var A = window.AN3S, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h(A.Starfield, { minHeight: 560 },
+    h('div', { className: 'hero' },
+      h(A.GradientText, null, 'Fueling growth at the intersection of'),
+      h(A.Eyebrow, null, 'Est. 2003'),
+      h(A.NameLockup, { first: 'Andries', last: 'Liebenberg', align: 'center', size: 48 }),
+      h('img', { className: 'mark', src: '/_blob/82558ef4f933afb2a49c7aa85ed9121d', alt: 'AN3S', width: 366, height: 124 }),
+      h(A.Statement, null, h(A.Highlight, { tone: 'pink' }, 'Strategic'), ' Development & ',
+        h(A.Highlight, { tone: 'cyan' }, 'Growth Advisor'), ' for Intelligent Businesses'),
+      h(A.GradientText, null, 'Strategy, Chaos, and Experimental Tech'))
+  ));
+</script>
+</body>
+</html>
