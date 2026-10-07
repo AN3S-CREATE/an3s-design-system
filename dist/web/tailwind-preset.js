@@ -13,8 +13,8 @@ export default {
       "deep-space": "hsl(var(--deep-space-hsl) / <alpha-value>)",
       "panel": "hsl(var(--panel-hsl) / <alpha-value>)",
       "nebula": "hsl(var(--nebula-hsl) / <alpha-value>)",
-      "line": "hsl(var(--line-hsl))",
-      "line-strong": "hsl(var(--line-strong-hsl))",
+      "line": "hsl(var(--line-channels) / calc(<alpha-value> * var(--line-alpha)))",
+      "line-strong": "hsl(var(--line-strong-channels) / calc(<alpha-value> * var(--line-strong-alpha)))",
       "ink": "hsl(var(--ink-hsl) / <alpha-value>)",
       "ink-soft": "hsl(var(--ink-soft-hsl) / <alpha-value>)",
       "ink-muted": "hsl(var(--ink-muted-hsl) / <alpha-value>)",
@@ -35,8 +35,8 @@ export default {
         "foreground": "hsl(var(--success-foreground) / <alpha-value>)"
       },
       "on-success": "hsl(var(--on-success-hsl) / <alpha-value>)",
-      "border": "hsl(var(--border))",
-      "input": "hsl(var(--input))",
+      "border": "hsl(var(--border-channels) / calc(<alpha-value> * var(--border-alpha)))",
+      "input": "hsl(var(--input-channels) / calc(<alpha-value> * var(--input-alpha)))",
       "ring": "hsl(var(--ring) / <alpha-value>)",
       "background": "hsl(var(--background) / <alpha-value>)",
       "foreground": "hsl(var(--foreground) / <alpha-value>)",
@@ -82,7 +82,7 @@ export default {
         "primary-foreground": "hsl(var(--sidebar-primary-foreground) / <alpha-value>)",
         "accent": "hsl(var(--sidebar-accent) / <alpha-value>)",
         "accent-foreground": "hsl(var(--sidebar-accent-foreground) / <alpha-value>)",
-        "border": "hsl(var(--sidebar-border))",
+        "border": "hsl(var(--sidebar-border-channels) / calc(<alpha-value> * var(--sidebar-border-alpha)))",
         "ring": "hsl(var(--sidebar-ring) / <alpha-value>)"
       }
     },

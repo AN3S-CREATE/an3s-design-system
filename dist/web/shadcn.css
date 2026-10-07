@@ -19,7 +19,11 @@
   --success: var(--success-hsl);
   --success-foreground: var(--on-success-hsl);
   --border: var(--line-hsl);
+  --border-channels: var(--line-channels);
+  --border-alpha: var(--line-alpha);
   --input: var(--line-strong-hsl);
+  --input-channels: var(--line-strong-channels);
+  --input-alpha: var(--line-strong-alpha);
   --ring: var(--focus-hsl);
   --chart-1: var(--pink-hsl);
   --chart-2: var(--cyan-hsl);
@@ -34,6 +38,8 @@
   --sidebar-accent: var(--nebula-hsl);
   --sidebar-accent-foreground: var(--ink-hsl);
   --sidebar-border: var(--line-hsl);
+  --sidebar-border-channels: var(--line-channels);
+  --sidebar-border-alpha: var(--line-alpha);
   --sidebar-ring: var(--focus-hsl);
   --radius: var(--radius-lg);
 }

@@ -138,6 +138,13 @@ function hslChannels(hex) {
   return a < 1 ? `${base} / ${fixed(a * 100)}%` : base;
 }
 
+// A translucent colour split into opaque channels and its own alpha, so a consumer's opacity
+// modifier (Tailwind's `border-border/50`) can multiply the two instead of producing invalid CSS.
+function channelsAndAlpha(hex) {
+  const { a } = rgba(hex);
+  return { channels: hslChannels(hex).split(' / ')[0], alpha: fixed(a) };
+}
+
 function luminance(hex) {
   const { r, g, b } = rgba(hex);
   const f = (c) => {
@@ -171,6 +178,13 @@ function tokensCss() {
     const target = aliasOf(raw);
     if (target) out.push(`  --${t.name}: var(--${target});`, `  --${t.name}-hsl: var(--${target}-hsl);`);
     else out.push(`  --${t.name}: ${raw};`, `  --${t.name}-hsl: ${hslChannels(raw)};`);
+    if (isTranslucent(t.name)) {
+      if (target) out.push(`  --${t.name}-channels: var(--${target}-channels);`, `  --${t.name}-alpha: var(--${target}-alpha);`);
+      else {
+        const { channels, alpha } = channelsAndAlpha(raw);
+        out.push(`  --${t.name}-channels: ${channels};`, `  --${t.name}-alpha: ${alpha};`);
+      }
+    }
   }
   for (const family of ['shadow', 'spacing', 'radius', 'gradient', 'size']) {
     for (const t of tokens[family]?.tokens ?? []) out.push(`  --${t.name}: ${valueOf(t)};`);
@@ -194,14 +208,24 @@ function tokensCss() {
 
 function shadcnCss() {
   const out = [`/* AN3S design system mapped onto shadcn/ui roles: pink leads, cyan answers. ${NOTE} */`, ':root {'];
-  for (const [role, token] of Object.entries(ROLES)) out.push(`  --${role}: var(--${token}-hsl);`);
+  for (const [role, token] of Object.entries(ROLES)) {
+    out.push(`  --${role}: var(--${token}-hsl);`);
+    if (isTranslucent(token)) out.push(`  --${role}-channels: var(--${token}-channels);`, `  --${role}-alpha: var(--${token}-alpha);`);
+  }
   out.push('  --radius: var(--radius-lg);', '}');
   return `${out.join('\n')}\n`;
 }
 
 function presetJs() {
-  const tokenColor = (name) => (isTranslucent(name) ? `hsl(var(--${name}-hsl))` : `hsl(var(--${name}-hsl) / <alpha-value>)`);
-  const roleColor = (role) => (isTranslucent(ROLES[role]) ? `hsl(var(--${role}))` : `hsl(var(--${role}) / <alpha-value>)`);
+  // Translucent colours multiply their own alpha by Tailwind's opacity modifier.
+  const tokenColor = (name) =>
+    isTranslucent(name)
+      ? `hsl(var(--${name}-channels) / calc(<alpha-value> * var(--${name}-alpha)))`
+      : `hsl(var(--${name}-hsl) / <alpha-value>)`;
+  const roleColor = (role) =>
+    isTranslucent(ROLES[role])
+      ? `hsl(var(--${role}-channels) / calc(<alpha-value> * var(--${role}-alpha)))`
+      : `hsl(var(--${role}) / <alpha-value>)`;
   const palette = {
     transparent: 'transparent',
     current: 'currentColor',

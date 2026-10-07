@@ -10,8 +10,12 @@
   --nebula-hsl: 281.74 82.14% 10.98%;
   --line: #d0ccd852;
   --line-hsl: 260 13.33% 82.35% / 32.16%;
+  --line-channels: 260 13.33% 82.35%;
+  --line-alpha: 0.32;
   --line-strong: #b2b1b68c;
   --line-strong-hsl: 252 3.31% 70.39% / 54.9%;
+  --line-strong-channels: 252 3.31% 70.39%;
+  --line-strong-alpha: 0.55;
   --ink: #ffffff;
   --ink-hsl: 0 0% 100%;
   --ink-soft: #e3e5e5;
