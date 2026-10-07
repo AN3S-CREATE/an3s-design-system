@@ -6,10 +6,10 @@
   --card-foreground: var(--ink-hsl);
   --popover: var(--panel-hsl);
   --popover-foreground: var(--ink-hsl);
-  --primary: var(--pink-hsl);
-  --primary-foreground: var(--deep-space-hsl);
-  --secondary: var(--cyan-hsl);
-  --secondary-foreground: var(--deep-space-hsl);
+  --primary: var(--pink-glow-hsl);
+  --primary-foreground: var(--on-glow-hsl);
+  --secondary: var(--cyan-glow-hsl);
+  --secondary-foreground: var(--on-glow-hsl);
   --muted: var(--panel-hsl);
   --muted-foreground: var(--ink-muted-hsl);
   --accent: var(--nebula-hsl);
@@ -29,8 +29,8 @@
   --sidebar: var(--panel-hsl);
   --sidebar-background: var(--panel-hsl);
   --sidebar-foreground: var(--ink-hsl);
-  --sidebar-primary: var(--pink-hsl);
-  --sidebar-primary-foreground: var(--deep-space-hsl);
+  --sidebar-primary: var(--pink-glow-hsl);
+  --sidebar-primary-foreground: var(--on-glow-hsl);
   --sidebar-accent: var(--nebula-hsl);
   --sidebar-accent-foreground: var(--ink-hsl);
   --sidebar-border: var(--line-hsl);

@@ -36,7 +36,7 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 - Gradients: `gradient-glow` for type, `gradient-neon` for edges and rules, `gradient-space` for full-bleed backgrounds. Always left to right, pink first.
 - Keep neon scarce. It is light, not paint: an edge, an icon, a few words. Large areas stay `deep-space`.
 - Status: `danger` for errors and destructive actions, `success` for confirmations, as text and icons on `deep-space` or `panel`, or as fills under `on-danger` and `on-success` labels. A status colour always comes with a word or an icon, and never decorates: `danger` sits close to `pink` in lightness.
-- In interfaces, pink is the primary action colour and cyan the secondary one; menus and hovers lift onto `nebula`.
+- In interfaces, pink leads as the primary colour and cyan follows as the secondary one, both in their glow tints: words in `pink-glow` and `cyan-glow`, fills under `on-glow` labels. Edges, focus rings, blooms and charts keep the saturated `pink`, `cyan`, `blue` and `violet`. Menus and hovers lift onto `nebula`.
 
 ## Type
 
