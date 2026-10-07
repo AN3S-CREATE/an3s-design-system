@@ -11,7 +11,7 @@
 //   node tools/export.mjs          write dist/web/
 //   node tools/export.mjs --check  exit 1 if dist/web/ is stale or a role pairing fails contrast
 import { createHash } from 'node:crypto';
-import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, rmdirSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -44,8 +44,6 @@ const ROLES = {
   'accent-foreground': 'ink',
   destructive: 'danger',
   'destructive-foreground': 'on-danger',
-  success: 'success',
-  'success-foreground': 'on-success',
   border: 'line',
   input: 'line-strong',
   ring: 'focus',
@@ -65,7 +63,8 @@ const ROLES = {
   'sidebar-ring': 'focus',
 };
 
-// [foreground role, background role, minimum WCAG ratio]: every pairing the roles promise.
+// [foreground, background, minimum WCAG ratio]: every pairing the roles promise. Each side is a
+// role name or, where shadcn has no role (success), a token name.
 const PAIRS = [
   ['foreground', 'background', 4.5],
   ['card-foreground', 'card', 4.5],
@@ -76,7 +75,7 @@ const PAIRS = [
   ['muted-foreground', 'background', 4.5],
   ['accent-foreground', 'accent', 4.5],
   ['destructive-foreground', 'destructive', 4.5],
-  ['success-foreground', 'success', 4.5],
+  ['on-success', 'success', 4.5],
   ['primary', 'background', 4.5],
   ['secondary', 'background', 4.5],
   ['destructive', 'background', 4.5],
@@ -243,7 +242,8 @@ function presetJs() {
     primary: { DEFAULT: roleColor('primary'), foreground: roleColor('primary-foreground') },
     secondary: { DEFAULT: roleColor('secondary'), foreground: roleColor('secondary-foreground') },
     destructive: { DEFAULT: roleColor('destructive'), foreground: roleColor('destructive-foreground') },
-    success: { DEFAULT: roleColor('success'), foreground: roleColor('success-foreground') },
+    // shadcn has no success role: point straight at the tokens.
+    success: { DEFAULT: tokenColor('success'), foreground: tokenColor('on-success') },
     muted: { DEFAULT: roleColor('muted'), foreground: roleColor('muted-foreground') },
     accent: { DEFAULT: roleColor('accent'), foreground: roleColor('accent-foreground') },
     popover: { DEFAULT: roleColor('popover'), foreground: roleColor('popover-foreground') },
@@ -430,8 +430,20 @@ const manifest = {
 };
 files.set('manifest.json', Buffer.from(`${JSON.stringify(manifest, null, 2)}\n`));
 
+// shadcn.css loads after tokens.css, so a role variable that shares a name with a token's variables
+// (name, -hsl, -channels, -alpha) would silently overwrite the token. Refuse any such collision.
+const tokenVars = new Set(['--radius']);
+for (const t of tokens.color.tokens) for (const s of ['', '-hsl', '-channels', '-alpha']) tokenVars.add(`--${t.name}${s}`);
+for (const family of ['shadow', 'spacing', 'radius', 'gradient', 'size']) for (const t of tokens[family]?.tokens ?? []) tokenVars.add(`--${t.name}`);
+for (const key of Object.keys(tokens.type.families)) tokenVars.add(`--font-${key}`);
+const clashes = Object.keys(ROLES).flatMap((role) => [`--${role}`, `--${role}-channels`, `--${role}-alpha`].filter((v) => tokenVars.has(v)));
+if (clashes.length) {
+  console.error(`Role variables would overwrite token variables: ${clashes.join(', ')}. Rename the role.`);
+  process.exit(1);
+}
+
 // Every pairing the role mapping promises must hold.
-const roleValue = (role) => resolve(ROLES[role]);
+const roleValue = (name) => resolve(name in ROLES ? ROLES[name] : name);
 const failures = [];
 for (const [fg, bg, min] of PAIRS) {
   const ratio = contrast(roleValue(fg), roleValue(bg));
@@ -442,21 +454,38 @@ if (failures.length) {
   process.exit(1);
 }
 
+// Everything already under dist/web, so files the export no longer produces can be found.
+function listTree(dir, prefix = '') {
+  if (!existsSync(dir)) return [];
+  return readdirSync(dir).flatMap((name) => {
+    const path = join(dir, name);
+    const rel = prefix ? `${prefix}/${name}` : name;
+    return statSync(path).isDirectory() ? listTree(path, rel) : [rel];
+  });
+}
+const leftovers = listTree(OUT).filter((rel) => !files.has(rel));
+
 if (CHECK) {
   const stale = [];
   for (const [rel, buf] of files) {
     const path = join(OUT, rel);
     if (!existsSync(path) || sha256(normalized(rel, readFileSync(path))) !== sha256(normalized(rel, buf))) stale.push(rel);
   }
-  if (stale.length) {
-    console.error(`dist/web is stale; run node tools/export.mjs. Stale: ${stale.join(', ')}`);
+  if (stale.length || leftovers.length) {
+    if (stale.length) console.error(`dist/web is stale; run node tools/export.mjs. Stale: ${stale.join(', ')}`);
+    if (leftovers.length) console.error(`dist/web holds files the export no longer produces; run node tools/export.mjs. Leftovers: ${leftovers.join(', ')}`);
     process.exit(1);
   }
   console.log(`dist/web is current (${files.size} files); ${PAIRS.length} role pairings pass contrast.`);
 } else {
+  for (const rel of leftovers) rmSync(join(OUT, rel));
+  // Drop directories the leftovers emptied, deepest first.
+  const dirs = [...new Set(leftovers.map((rel) => dirname(join(OUT, rel))))].sort((a, b) => b.length - a.length);
+  for (const dir of dirs) if (dir !== OUT && existsSync(dir) && readdirSync(dir).length === 0) rmdirSync(dir);
   for (const [rel, buf] of files) {
     mkdirSync(dirname(join(OUT, rel)), { recursive: true });
     writeFileSync(join(OUT, rel), buf);
   }
-  console.log(`Wrote ${files.size} files to dist/web; ${PAIRS.length} role pairings pass contrast.`);
+  const removed = leftovers.length ? `, removed ${leftovers.length} leftover file(s)` : '';
+  console.log(`Wrote ${files.size} files to dist/web${removed}; ${PAIRS.length} role pairings pass contrast.`);
 }

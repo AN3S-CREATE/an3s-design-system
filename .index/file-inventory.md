@@ -8,7 +8,7 @@ All paths relative to the repository root. "Upload" = stored in the artifact's a
 | --- | --- | --- |
 | `README.md` | GitHub landing page: what the repo is, folder layout, how to republish | Active |
 | `.gitignore` | Ignores OS clutter (`Thumbs.db`, `desktop.ini`, `.DS_Store`) and agent working state (`.agents/`, home of `REPO_ANALYSIS_MEMORY.md`) | Active |
-| `tools/export.mjs` | Web export: reads `project/tokens.json` + brand assets, writes `dist/web/`; `--check` fails when stale or when a shadcn role pairing misses contrast. Holds the shadcn role mapping (`ROLES`), the pairings it must satisfy (`PAIRS`) and `GOOGLE_FAMILIES` | Active |
+| `tools/export.mjs` | Web export: reads `project/tokens.json` + brand assets, writes `dist/web/`; `--check` fails when stale, when `dist/web/` holds leftovers (a normal run deletes them) or when a pairing misses contrast. Holds the shadcn role mapping (`ROLES`, which may not share a variable name with any token: the run stops on a clash), the pairings it must satisfy (`PAIRS`) and `GOOGLE_FAMILIES` | Active |
 | `dist/web/tokens.css` | Every token as a CSS custom property, plus an `-hsl` channel copy of each colour and a `.type-<style>` class per type style | Generated |
 | `dist/web/shadcn.css` | shadcn/ui role variables (`--background`, `--primary`…) pointing at token `-hsl` channels: pink-glow primary, cyan-glow secondary (on-glow labels), nebula accent, line-strong input, focus ring | Generated |
 | `dist/web/tailwind-preset.js` | Tailwind preset: palette = tokens + roles only (`black`/`white` remapped to `void`/`ink`), fonts, radii, glow shadows (stock drop shadows render as none), gradients, type styles as font sizes, `space-*`, size tokens | Generated |
