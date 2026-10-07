@@ -8,6 +8,13 @@ All paths relative to the repository root. "Upload" = stored in the artifact's a
 | --- | --- | --- |
 | `README.md` | GitHub landing page: what the repo is, folder layout, how to republish | Active |
 | `.gitignore` | Ignores OS clutter (`Thumbs.db`, `desktop.ini`, `.DS_Store`) and agent working state (`.agents/`, home of `REPO_ANALYSIS_MEMORY.md`) | Active |
+| `tools/export.mjs` | Web export: reads `project/tokens.json` + brand assets, writes `dist/web/`; `--check` fails when stale or when a shadcn role pairing misses contrast. Holds the shadcn role mapping (`ROLES`), the pairings it must satisfy (`PAIRS`) and `GOOGLE_FAMILIES` | Active |
+| `dist/web/tokens.css` | Every token as a CSS custom property, plus an `-hsl` channel copy of each colour and a `.type-<style>` class per type style | Generated |
+| `dist/web/shadcn.css` | shadcn/ui role variables (`--background`, `--primary`…) pointing at token `-hsl` channels: pink primary, cyan secondary, nebula accent, line-strong input | Generated |
+| `dist/web/tailwind-preset.js` | Tailwind preset: palette = tokens + roles only (`black`/`white` remapped to `void`/`ink`), fonts, radii, glow shadows (stock drop shadows render as none), gradients, type styles as font sizes, `space-*`, size tokens | Generated |
+| `dist/web/tokens.ts` | Typed hex/values for charts and canvas; `googleFontsHref` | Generated |
+| `dist/web/manifest.json` | `tokensSha256`, `googleFontsHref`, role map and LF-normalised sha256 of every exported file | Generated |
+| `dist/web/README.md`, `dist/web/assets/**` | How a consumer uses the export; copies of the two wordmark PNGs and eight icon SVGs | Generated |
 
 ## Index and brand book
 
@@ -15,7 +22,7 @@ All paths relative to the repository root. "Upload" = stored in the artifact's a
 | --- | --- | --- | --- |
 | `project/design-system.json` | Artifact index (v3, layout "files") | title/namespace `AN3S`; libraries react/react-dom 18; asset groups Logos, Icons, Imagery with blob ids; `createdOnFiles` marker; `lastChange` | Active |
 | `project/README.md` | Brand book read first by consuming agents | Key visual as components; voice & copy; colour; type; panels; light; imagery; logo; iconography; motion; accessibility; intentional additions | Active |
-| `project/tokens.json` | Design tokens (list-shaped, one theme `night` "Neon Night") | 18 colours; type families `sans` (Montserrat), `mono`; 12 type styles in Display/Text/Code; spacing `space-1..8`; radius `radius-sm/md/lg/full`; shadows `glow-pink/blue/cyan`, `focus-ring`; `gradient-glow/neon/space`; size `control`, `icon-tile`, `icon-inline`, `measure` | Active |
+| `project/tokens.json` | Design tokens (list-shaped, one theme `night` "Neon Night") | 23 colours (incl. `line-strong`, `danger`/`on-danger`, `success`/`on-success` added 2026-10-07); type families `sans` (Montserrat), `mono`; 12 type styles in Display/Text/Code; spacing `space-1..8`; radius `radius-sm/md/lg/full`; shadows `glow-pink/blue/cyan`, `focus-ring`; `gradient-glow/neon/space`; size `control`, `icon-tile`, `icon-inline`, `measure` | Active |
 
 ## Components
 
