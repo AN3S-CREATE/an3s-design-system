@@ -119,9 +119,9 @@
   ],
   "lastChange": {
     "by": "Andries Liebenberg",
-    "at": "2026-10-07T13:25:36Z",
+    "at": "2026-10-07T13:29:14Z",
     "via": "Claude Code",
-    "note": "Added line-strong and the danger and success status colours for the an3s.info website; the brand book documents them."
+    "note": "Brand book: in interfaces pink leads as the primary colour and cyan follows, both in their glow tints; saturated hues stay on edges, rings, blooms and charts."
   },
   "layout": "files",
   "libraries": [
