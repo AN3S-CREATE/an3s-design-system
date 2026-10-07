@@ -22,7 +22,7 @@ All paths relative to the repository root. "Upload" = stored in the artifact's a
 | Path | Purpose | Key symbols | Status |
 | --- | --- | --- | --- |
 | `project/components/bundle.js` | Classic script assigning `window.AN3S` (React 18 via `window.React`) | `Panel`, `ServiceGrid` (`defaultItems`), `Icon` (`names`, `ICONS` path data), `AwardWall`, `GradientText`, `Eyebrow`, `NameLockup`, `Statement`, `Highlight`, `Halo`, `Starfield` (`drawSky`, seeded PRNG), `Button`; helpers `cx`, `without`, `token`, `useColumns` | Active |
-| `project/components/bundle.css` | Component styles, `an3s-` prefix, all values via tokens | `.an3s-panel*`, `.an3s-service*`, `.an3s-icon*`, `.an3s-award*`, `.an3s-gradient-*`, `.an3s-eyebrow*`, `.an3s-name*`, `.an3s-statement`, `.an3s-highlight*`, `.an3s-halo*`, `.an3s-starfield*`, `.an3s-btn*` | Active |
+| `project/components/bundle.css` | Component styles, `an3s-` prefix, token-driven (raw values only for small effect metrics such as blur/drop-shadow radii, the logo max-height, and `#000` mask channels); also carries an unscoped `body` rule at l.4-10 (see dead-code.md) | `.an3s-panel*`, `.an3s-service*`, `.an3s-icon*`, `.an3s-award*`, `.an3s-gradient-*`, `.an3s-eyebrow*`, `.an3s-name*`, `.an3s-statement`, `.an3s-highlight*`, `.an3s-halo*`, `.an3s-starfield*`, `.an3s-btn*` | Active |
 | `project/components/index.d.ts` | Type docs for every component (published as text/plain) | `IconName`, `*Props` interfaces, `Window.AN3S` | Active |
 | `project/components/Cover/preview.html` | System cover (960×288): palette blocks + halo arcs + "AN3S" | Derivation comment atop the SVG | Active |
 | `project/components/<Comp>/README.md` | Usage guidelines per component (12) | First sentence = summary | Active |
@@ -35,7 +35,7 @@ All paths relative to the repository root. "Upload" = stored in the artifact's a
 | `project/assets/Logos/an3s-wordmark.png` | Wordmark, transparent, 366×124, matted from the key visual (upload `82558ef4…`) | Active |
 | `project/assets/Logos/an3s-wordmark-on-space.png` | Wordmark with its night-sky backdrop, 366×124 (upload `e540877a…`) | Active |
 | `project/assets/Logos/README.md` | Logo usage notes (published file) | Active |
-| `project/assets/Icons/*.svg` (8) | Two-tone neon line icons, one per discipline, 56-unit box with glow (uploads) | Active |
+| `project/assets/Icons/*.svg` (8) | Two-tone neon line icons, one per discipline, 56-unit box with glow (uploads). Pre-upload sources: the asset store re-serialized them (self-closing tags expanded, trailing newline dropped), so `design-system.json` sizes run 59-113 bytes above the local files while the artwork is identical | Active |
 | `project/assets/Icons/README.md` | Icon list and inks (published file) | Active |
 | `project/assets/Imagery/an3s-key-visual.webp` | The 1000×1000 master key visual (upload `60ad7c23…`) | Active |
 | `project/assets/Imagery/README.md` | Imagery notes (published file) | Active |

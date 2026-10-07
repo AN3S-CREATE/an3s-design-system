@@ -23,7 +23,7 @@ project/
 
 - **Tokens → CSS**: the page compiles `tokens.json` into `tokens.css` (custom properties + type classes such as `.label`, `.tagline`). Components use `var(--token)` and the type classes; no raw hex in component CSS except mask channels and canvas fallbacks.
 - **Fonts**: Montserrat is hosted by Google Fonts. The viewer auto-links it for type specimens (it is in the page's built-in catalogue); every preview links it itself because preview frames only inject `type.fonts` files.
-- **Assets**: binaries are uploaded (`Artifact publish asset:true`) and recorded in `design-system.json` → `assetGroups.<Group>.files.<name>` with `blob`, `size`, `type`. Previews reference them as `/_blob/<id>`.
+- **Assets**: binaries are uploaded (`Artifact publish asset:true`) and recorded in `design-system.json` → `assetGroups.<Group>.files.<name>` with `blob`, `size`, `type`. Previews reference them as `/_blob/<id>`. The store re-serializes SVG uploads (expanded end tags, no trailing newline), so an SVG record's `size` is the stored size: compare SVGs after that normalization, never raw local bytes. PNG/WebP sizes match local bytes exactly.
 - **Publishing**: one publish call with `root` = repo root, `file_path` = `project/design-system.json`, `files` = changed `project/…` paths; `.d.ts` needs `contentType: text/plain`.
 
 ## Patterns and constraints
