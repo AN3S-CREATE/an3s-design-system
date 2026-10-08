@@ -35,6 +35,8 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 - Coloured words use the glow tints (`pink-glow`, `violet-glow`, `cyan-glow`), which read as emitted light. The saturated `pink` and `cyan` are for strokes, edges and icons.
 - Gradients: `gradient-glow` for type, `gradient-neon` for edges and rules, `gradient-space` for full-bleed backgrounds. Always left to right, pink first.
 - Keep neon scarce. It is light, not paint: an edge, an icon, a few words. Large areas stay `deep-space`.
+- Status: `danger` for errors and destructive actions, `success` for confirmations, as text and icons on `deep-space` or `panel`, or as fills under `on-danger` and `on-success` labels. A status colour always comes with a word or an icon, and never decorates: `danger` sits close to `pink` in lightness.
+- In interfaces, pink leads as the primary colour and cyan follows as the secondary one, both in their glow tints: words in `pink-glow` and `cyan-glow`, fills under `on-glow` labels. Edges, focus rings, blooms and charts keep the saturated `pink`, `cyan`, `blue` and `violet`. Menus and hovers lift onto `nebula`.
 
 ## Type
 
@@ -48,6 +50,7 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 - Group related content in a `Panel`: a 2px edge in the neon gradient, `radius-lg` corners, `panel` fill, a tab label in the `label` style (`radius-md`) notched into the top edge, `space-5` padding.
 - Two panels side by side sit `space-3` apart at equal height: pink for recognition and people, blue for services and systems.
 - Inside panels, divide tiles with `line` hairlines, never boxes within boxes.
+- Form controls (inputs, selects, checkboxes) take a `line-strong` edge, so the edge alone marks the control.
 - Corners: `radius-lg` for panels and image frames, `radius-md` for tabs and buttons, `radius-sm` for code and chips, `radius-full` only for the halo, nodes and round portraits. No square-cornered surfaces.
 
 ## Light and depth
@@ -82,10 +85,10 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 
 ## Accessibility
 
-- On `deep-space`: `ink` 20:1, `ink-soft` 16:1, `ink-muted` 9.5:1, `pink` 6.5:1, `blue` 4.7:1, `cyan` 13:1, every glow tint 8.9:1 or better. `violet` (3.1:1) is for marks only; `line` (2.1:1) is decorative.
+- On `deep-space`: `ink` 20:1, `ink-soft` 16:1, `ink-muted` 9.5:1, `pink` 6.5:1, `blue` 4.7:1, `cyan` 13:1, `danger` 6:1, `success` 15:1, every glow tint 8.9:1 or better. `line-strong` (3.4:1) is the weakest edge a control may have; `violet` (3.1:1) is for marks only; `line` (2.1:1) is decorative.
 - Every interactive element shows `focus-ring`: a 2px `deep-space` gap, then 2px of `cyan`.
 - Colour is never the only signal: highlighted words are also ExtraBold, and icons always sit beside a label.
 
 ## Intentional additions
 
-The key visual shows no interface, so these were added for web, app and document work: `Button`; the `heading`, `body`, `caption`, `action` and `code` styles; the `panel` fill (a step above `deep-space`); the `link` and `focus` tokens; and the `size` tokens.
+The key visual shows no interface, so these were added for web, app and document work: `Button`; the `heading`, `body`, `caption`, `action` and `code` styles; the `panel` fill (a step above `deep-space`); the `link` and `focus` tokens; the `size` tokens; and, for the website's forms and messages, `line-strong` and the `danger` and `success` status colours.

@@ -23,8 +23,9 @@ project/
 
 - **Tokens → CSS**: the page compiles `tokens.json` into `tokens.css` (custom properties + type classes such as `.label`, `.tagline`). Components use `var(--token)` and the type classes; no raw hex in component CSS except mask channels and canvas fallbacks.
 - **Fonts**: Montserrat is hosted by Google Fonts. The viewer auto-links it for type specimens (it is in the page's built-in catalogue); every preview links it itself because preview frames only inject `type.fonts` files.
-- **Assets**: binaries are uploaded (`Artifact publish asset:true`) and recorded in `design-system.json` → `assetGroups.<Group>.files.<name>` with `blob`, `size`, `type`. Previews reference them as `/_blob/<id>`.
+- **Assets**: binaries are uploaded (`Artifact publish asset:true`) and recorded in `design-system.json` → `assetGroups.<Group>.files.<name>` with `blob`, `size`, `type`. Previews reference them as `/_blob/<id>`. The store re-serializes SVG uploads (expanded end tags, no trailing newline), so an SVG record's `size` is the stored size: compare SVGs after that normalization, never raw local bytes. PNG/WebP sizes match local bytes exactly.
 - **Publishing**: one publish call with `root` = repo root, `file_path` = `project/design-system.json`, `files` = changed `project/…` paths; `.d.ts` needs `contentType: text/plain`.
+- **Web export → websites**: `node tools/export.mjs` writes `dist/web/` (tokens.css, shadcn.css, tailwind-preset.js, tokens.ts, assets, manifest.json) and refuses to finish if a shadcn role pairing misses contrast. an3s.info (`AN3S-at-CREATE/andries-liebenberg-my-eventful-pursuit`, a Lovable project) vendors `dist/web/` into `src/design-system/` with its own sync script and fails its checks if the copy or its hashes drift. Tooling stays at the repo root: the artifact type refuses toolchain files inside `project/`.
 
 ## Patterns and constraints
 
