@@ -7,7 +7,7 @@ All paths relative to the repository root. "Upload" = stored in the artifact's a
 | Path | Purpose | Status |
 | --- | --- | --- |
 | `README.md` | GitHub landing page: what the repo is, folder layout, how to republish | Active |
-| `.gitignore` | Ignores OS clutter (`Thumbs.db`, `desktop.ini`, `.DS_Store`) | Active |
+| `.gitignore` | Ignores OS clutter (`Thumbs.db`, `desktop.ini`, `.DS_Store`) and agent working state (`.agents/`, home of `REPO_ANALYSIS_MEMORY.md`) | Active |
 
 ## Index and brand book
 

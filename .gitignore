@@ -2,3 +2,6 @@
 Thumbs.db
 desktop.ini
 .DS_Store
+
+# Agent working state (REPO_ANALYSIS_MEMORY.md, per the global analysis protocol)
+.agents/
