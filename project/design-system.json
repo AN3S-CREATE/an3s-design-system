@@ -72,16 +72,53 @@
           "name": "an3s-key-visual.webp",
           "size": 260462,
           "type": "image/webp"
+        },
+        "an3s-share.png": {
+          "blob": "1b60245bd80ade5db5fc5705d98c09e0",
+          "name": "an3s-share.png",
+          "size": 351536,
+          "type": "image/png"
         }
       },
       "name": "Imagery",
       "order": [
-        "an3s-key-visual.webp"
+        "an3s-key-visual.webp",
+        "an3s-share.png"
       ],
       "tile": "l"
     },
     "Logos": {
       "files": {
+        "an3s-loader.svg": {
+          "blob": "2ae364068f7af0c36145682be61d75e5",
+          "name": "an3s-loader.svg",
+          "size": 1531,
+          "type": "image/svg+xml"
+        },
+        "an3s-mark-180.png": {
+          "blob": "fdb42adaa20da2c3c123286db7a6bba9",
+          "name": "an3s-mark-180.png",
+          "size": 7629,
+          "type": "image/png"
+        },
+        "an3s-mark-512.png": {
+          "blob": "acf3ad81cc9d211a33fb9a0db1d7073b",
+          "name": "an3s-mark-512.png",
+          "size": 38482,
+          "type": "image/png"
+        },
+        "an3s-mark.svg": {
+          "blob": "169faa6cfbe2379203f26c75471bab33",
+          "name": "an3s-mark.svg",
+          "size": 816,
+          "type": "image/svg+xml"
+        },
+        "an3s-wordmark-flat.svg": {
+          "blob": "c5526ddd30bb561ddb1ee9bb54d2127a",
+          "name": "an3s-wordmark-flat.svg",
+          "size": 822,
+          "type": "image/svg+xml"
+        },
         "an3s-wordmark-on-space.png": {
           "blob": "e540877ae32a9c968173006ba981a74a",
           "name": "an3s-wordmark-on-space.png",
@@ -93,10 +130,22 @@
           "name": "an3s-wordmark.png",
           "size": 66534,
           "type": "image/png"
+        },
+        "an3s-wordmark.svg": {
+          "blob": "42e851e6966927b7c82328d850e5bcd1",
+          "name": "an3s-wordmark.svg",
+          "size": 1413,
+          "type": "image/svg+xml"
         }
       },
       "name": "Logos",
       "order": [
+        "an3s-wordmark.svg",
+        "an3s-wordmark-flat.svg",
+        "an3s-loader.svg",
+        "an3s-mark.svg",
+        "an3s-mark-180.png",
+        "an3s-mark-512.png",
         "an3s-wordmark.png",
         "an3s-wordmark-on-space.png"
       ],
@@ -119,9 +168,9 @@
   ],
   "lastChange": {
     "by": "Andries Liebenberg",
-    "at": "2026-10-07T13:29:14Z",
+    "at": "2026-10-14T14:06:13Z",
     "via": "Claude Code",
-    "note": "Brand book: in interfaces pink leads as the primary colour and cyan follows, both in their glow tints; saturated hues stay on edges, rings, blooms and charts."
+    "note": "Logos: vector wordmark (glowing master, flat and loader versions) and the mark (the pink 3) with its 180 and 512 px PNGs; Imagery: the 1200 x 630 share image. Brand book Logo rules updated; the PNG wordmarks become raster fallbacks."
   },
   "layout": "files",
   "libraries": [

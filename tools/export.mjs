@@ -5,7 +5,7 @@
 //   shadcn.css          the design system mapped onto shadcn/ui roles (pink leads, cyan answers)
 //   tailwind-preset.js  a Tailwind preset whose palette, fonts, radii and shadows are only these tokens
 //   tokens.ts           typed values for code that can't read CSS (charts, canvas)
-//   assets/             the wordmark and the service icons
+//   assets/             the wordmark, mark, loader, share image and the service icons
 //   manifest.json       source hash, Google Fonts URL and a hash of every file, for consumers' checks
 //
 //   node tools/export.mjs          write dist/web/
@@ -387,7 +387,7 @@ function readmeMd(href) {
     '- loads its Tailwind config through `tailwind-preset.js`, so the palette, fonts, radii and shadows are only these tokens (the stock Tailwind colours and drop shadows are gone);',
     `- loads the fonts from ${href};`,
     '- imports `tokens.ts` where code needs raw values (charts, canvas);',
-    '- takes the wordmark and icons from `assets/`;',
+    '- takes its brand graphics from `assets/` (built by `tools/brand/build.mjs`): `an3s-wordmark.svg` as the logo (`an3s-wordmark-flat.svg` below 120px wide; the PNGs only where SVG can\'t go), `an3s-mark.svg` as the favicon with `an3s-mark-180.png` as the apple-touch-icon, `an3s-mark-512.png` for app manifests and structured-data logos, `an3s-loader.svg` for loading screens, `an3s-share.png` as the og:image, and the service icons from `assets/icons/`;',
     '- verifies its copy against the hashes in `manifest.json` (CRLF normalised to LF for text files).',
     '',
     'Rules for using the tokens (which colour leads, when to glow, type casing) live in the design system\'s brand book, `project/README.md`.',
@@ -397,8 +397,11 @@ function readmeMd(href) {
 
 // ---------- assets ----------
 const ASSETS = [
-  ['project/assets/Logos/an3s-wordmark.png', 'assets/an3s-wordmark.png'],
-  ['project/assets/Logos/an3s-wordmark-on-space.png', 'assets/an3s-wordmark-on-space.png'],
+  ...readdirSync(join(ROOT, 'project', 'assets', 'Logos'))
+    .filter((f) => !f.endsWith('.md'))
+    .sort()
+    .map((f) => [`project/assets/Logos/${f}`, `assets/${f}`]),
+  ['project/assets/Imagery/an3s-share.png', 'assets/an3s-share.png'],
   ...readdirSync(join(ROOT, 'project', 'assets', 'Icons'))
     .filter((f) => f.endsWith('.svg'))
     .sort()

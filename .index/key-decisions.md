@@ -10,7 +10,16 @@ The source is entirely dark. A light theme would be invention and, because the v
 The poster's display type reads as a wide geometric sans set Light/ExtraBold with heavy tracking. Montserrat matches and is in the viewer's hosted-font catalogue (no font files needed). System mono stack for code.
 
 ## 2026-09-25 — Wordmark lifted from the raster, not redrawn
-`an3s-wordmark.png` is matted from the poster pixels (unscreen alpha + component clean-up); `an3s-wordmark-on-space.png` is the raw crop. Only 366×124 px: a vector master is the top missing asset.
+`an3s-wordmark.png` is matted from the poster pixels (unscreen alpha + component clean-up); `an3s-wordmark-on-space.png` is the raw crop. Only 366×124 px: a vector master is the top missing asset. (Superseded 2026-10-14: vector master redrawn; the PNGs remain as fallbacks.)
+
+## 2026-10-14 — Vector wordmark redrawn by fitting the raster
+`tools/brand/geometry.mjs` holds the wordmark as four outlines in the raster's own pixel units, fitted to the PNG's anti-aliased contours (lines for the A legs, N diagonal, 3 diagonal and terminal cuts; concentric circles for the 3 and S bowls). Fitted values are kept rather than idealised (left A leg leans 0.455, right 0.429; the A's right foot tucks into the N stem), so the SVG traces the artwork it replaces. Colours come from tokens (`ink`, `pink`, `cyan`), so the 3's red-to-magenta raster gradient became flat `pink`. Glow = blur 2.5 halo + blur 9 bloom at 80% in each letter's colour; the PNGs stay as raster fallbacks.
+
+## 2026-10-14 — The mark is the pink 3
+For favicons and app icons the wordmark is illegible below ~72px, so the mark is the 3 alone (the brand's lead pole, pink) on a `deep-space` tile with `radius-lg` proportions (rx 28 of 128). Legible at 16px. Proposed to the user; alternatives (3S, AN/3S stacked) were not drawn.
+
+## 2026-10-14 — Brand graphics are built, not hand-edited
+`tools/brand/build.mjs` writes the SVGs from geometry + tokens and renders the PNGs and share image with headless Chrome or Edge (no npm dependencies). No favicon.ico: the asset store accepts no .ico and current browsers (Safari 26 included) read SVG favicons. The share image is composed from the system's own components (Starfield, NameLockup, Statement) so it changes with them. Renders need a browser and, for the share image, the network (Google Fonts, jsDelivr React).
 
 ## 2026-09-25 — Icons drawn for the system
 The poster's icons are small raster renders; eight new two-tone line icons (pink form, cyan detail, 2px round, 48 grid) were drawn to match and are flagged in the README's Iconography section.
