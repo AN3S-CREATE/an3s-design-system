@@ -64,12 +64,16 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 - Start from `Starfield` (flat fallback: `gradient-space`): pink smoke low on the left, blue smoke on the right, pinpoint stars, streaks from the upper right, circuit traces in the upper left.
 - Portraits are cut out, lit with a pink rim from the left and blue from the right, set in a `Halo` in front of a neon night skyline.
 - Imagery is night-time, cool and high-contrast: skylines, light trails, circuitry, smoke. No daylight stock, no flat illustration.
+- Link previews (og:image, twitter:image) use `assets/Imagery/an3s-share.png`, 1200 × 630: the name, wordmark and descriptor on a `Starfield`.
 
 ## Logo
 
-- The wordmark is AN in white, 3 in pink, S in cyan, with its own glow. Use `assets/Logos/an3s-wordmark.png` on `deep-space`, `void`, `panel` or a `Starfield`, and `an3s-wordmark-on-space.png` where transparency isn't possible.
+- The wordmark is AN in white, 3 in pink, S in cyan, with its own glow. The master is `assets/Logos/an3s-wordmark.svg`, redrawn as vectors from the key visual: use it on `deep-space`, `void`, `panel` or a `Starfield`, at 120px wide or more.
+- Below 120px wide use `an3s-wordmark-flat.svg`, the same letters without glow (glow turns to blur at small sizes). Never show the wordmark below 72px wide: use the mark instead.
+- `an3s-wordmark.png` and `an3s-wordmark-on-space.png` (366 × 124 px) are the original raster lifts, only for places that can't take SVG (email signatures, some social tools): show them 366px wide or less (183px or less on 2× screens) and never below 96px. Use the on-space version where transparency isn't possible.
+- The mark, `an3s-mark.svg`, is the pink 3 of the wordmark on a `deep-space` tile: favicons, app icons and avatars, never beside the wordmark. Ready-made exports: `an3s-mark-180.png` (apple-touch-icon) and `an3s-mark-512.png` (app manifests, structured-data logos); the SVG itself is the favicon.
+- Loading screens use `an3s-loader.svg`: the glowing wordmark whose bloom breathes (see Motion) and holds still under `prefers-reduced-motion`.
 - Never re-set the wordmark in a font, recolour it, outline it, stretch it or put it on a light ground.
-- Both files are 366 × 124 px: show them 366px wide or less (183px or less on 2× screens) and never below 96px.
 - Keep clear space around it equal to the height of the "3".
 
 ## Iconography
