@@ -1,5 +1,14 @@
 # Key decisions
 
+## 2026-10-18 — Motion v1: light first, travel last (approved by Andries)
+The original rule ("Light breathes, nothing travels ... no slides, bounces or parallax") left an3s.info with hard page cuts and flat reveals. Andries approved a governed motion set: four durations (120/240/420/4000ms), a 60ms stagger, two curves, "house lights" page changes, staggered one-time reveals, edge-first panel reveals, one gliding nav hairline, a 0.98 press, and starfield-only parallax at 0.04x scroll on desktop. Parallax was recommended against and approved explicitly, so it is fenced: starfield layer only, never hero media or content, off on touch and under reduced motion. Recorded as `motion` tokens in `project/tokens.json`; `dist/web/` needs a re-export through `tools/export.mjs` to carry them.
+
+## 2026-10-18 — Fixed, solid header (approved by Andries)
+A transparent sticky header let page titles scroll under the nav. The header is now fixed on `deep-space` at 82% with a 12px blur and a `line` hairline after 4px of scroll, with `scroll-padding-top` and content padding equal to its height.
+
+## 2026-10-18 — Discipline Ledger as the price-list pattern
+Prices are shown as one `Panel` per discipline with a "starts at" entry price and a hairline ledger of offers, not as a grid of cards. Quote-only work shows a cyan "Scoped with you" chip and, where it applies, a priced first step, so it reads as deliberate rather than blank. Documented in `project/components/DisciplineLedger/README.md`; built from existing tokens only.
+
 ## 2026-09-25 — Colours measured from the key visual
 Neon values sampled from the poster's most saturated pixels per hue band (pink #fb49b6, violet #9020ca, blue #2476f0, cyan #48e1fd); grounds from its dark pixels (deep-space #03041d, void #000000, nebula #250533); glow text tints averaged from the tagline and descriptor type. `panel` (#080a24) is a derived step above `deep-space` so panels read on flat grounds.
 

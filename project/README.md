@@ -47,7 +47,7 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 
 ## Panels, lines and corners
 
-- Group related content in a `Panel`: a 2px edge in the neon gradient, `radius-lg` corners, `panel` fill, a tab label in the `label` style (`radius-md`) notched into the top edge, `space-5` padding.
+- Group related content in a `Panel` (for price lists, the `DisciplineLedger` pattern): a 2px edge in the neon gradient, `radius-lg` corners, `panel` fill, a tab label in the `label` style (`radius-md`) notched into the top edge, `space-5` padding.
 - Two panels side by side sit `space-3` apart at equal height: pink for recognition and people, blue for services and systems.
 - Inside panels, divide tiles with `line` hairlines, never boxes within boxes.
 - Form controls (inputs, selects, checkboxes) take a `line-strong` edge, so the edge alone marks the control.
@@ -84,8 +84,20 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 
 ## Motion
 
-- Light breathes, nothing travels: a glow may swell by about a third over 4s, ease-in-out, and stars may twinkle slowly. No slides, bounces or parallax.
-- Under `prefers-reduced-motion`, everything is still.
+Light first, travel last (Motion v1, approved by Andries 2026-10-18). Light still does most of the work: glows swell, edges light, prices resolve. Movement is small, short and always in service of reading order. Anything not listed here is not part of the system.
+
+- Tokens: `motion-fast` 120ms (hover colour, press), `motion-base` 240ms (edge glow, row fade, header hairline), `motion-slow` 420ms (reveals, panel open and close, nav indicator glide), `motion-breath` 4000ms (halo and loader breathing), `motion-stagger` 60ms per child. Two curves only: `ease-enter` cubic-bezier(.2,.7,.2,1) for entrances, `ease-in-out` cubic-bezier(.65,0,.35,1) for exits, open and close, and breathing. No bounce, spring or overshoot.
+- Breathing: a glow may swell by about a third over `motion-breath`, `ease-in-out`; stars may twinkle and drift slowly.
+- Page changes ("house lights"): the content dims and settles 1% smaller over 180ms, then the new page lights up headline first over 320ms after a 60ms delay. The header, wordmark and starfield never move or re-render. Prefer the View Transitions API; fall back to a keyed fade with the same values. Focus moves to the new page's H1.
+- Reveals: one time per element, opacity plus a 10px rise over `motion-slow`, children in reading order `motion-stagger` apart (at most 8 children, 6 on mobile). Reveal states hide with opacity, never `display`, so nothing shifts.
+- Panels light edge first: the neon edge fades in, then the entry price resolves from 25% opacity and 3px blur to full ink once, then rows follow 40ms apart with a 6px rise. Open and close ease over `motion-slow`; closing runs the reverse. No counting tickers.
+- Navigation: one `gradient-neon` hairline glides under the active link (transform only, `motion-slow`). It is the only element that travels sideways.
+- Hover and press: the `glow-cyan` edge answers hover with at most a 2px lift; buttons press to 0.98 scale for 60ms.
+- Header: fixed, `deep-space` at 82% with a 12px backdrop blur; a `line` hairline appears once the page scrolls past 4px. Set `scroll-padding-top` to the header height plus `space-3` (16px) and pad page content by the header height, so nothing sits under it.
+- Parallax: the starfield layer only, moving at 0.04x scroll (translateY), on desktop only (min-width 1024px and a fine pointer). Never on hero media (image, video, poster), portraits, panels, content or text. No other parallax.
+- Hero media: a muted video loop with a poster image is allowed; it holds on the poster under reduced motion.
+- Performance: animate transform and opacity only (exceptions: a panel's grid-template-rows on user click, one blur per entry price, once). One-shot IntersectionObserver; the only scroll listeners are the header hairline and the starfield parallax, both passive and frame-throttled. `will-change` on the starfield only.
+- Under `prefers-reduced-motion`, everything is still: no reveals, transitions, breathing or parallax, content is visible at once, and page changes are an instant swap with focus still moved to the H1.
 
 ## Accessibility
 
