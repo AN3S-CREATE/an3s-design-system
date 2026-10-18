@@ -22,6 +22,6 @@ Edit files under `project/`, then publish the changed paths to the artifact. Ima
 
 The design system is the only source of truth for every site that uses it, starting with an3s.info. After any change under `project/`:
 
-1. If the wordmark geometry or a colour token changed, run `node tools/brand/build.mjs` first. Then run `node tools/export.mjs` to rebuild `dist/web/`. It fails if a role pairing (for example text on the primary colour) drops below its contrast minimum.
+1. If the wordmark geometry, a colour token, or the components/styles used by the share image (`Starfield`, `NameLockup`, `Statement`, or `Highlight`) changed, run `node tools/brand/build.mjs` first. The full build refreshes `dist/web/` token CSS before rendering. Then run `node tools/export.mjs` to rebuild `dist/web/` with the generated graphics. It fails if a role pairing (for example text on the primary colour) drops below its contrast minimum.
 2. Commit `project/` and `dist/web/` together; `node tools/export.mjs --check` confirms `dist/web/` is current.
 3. In the website, run its design-system sync script, which copies `dist/web/` in and records the manifest; never edit the copied files there.
