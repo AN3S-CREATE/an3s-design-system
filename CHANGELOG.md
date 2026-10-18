@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-18 — New homepage hero approved by Andries
+
+- New component pattern: `project/components/Hero/README.md`, documenting the approved an3s.info homepage hero (layout, copy order, muted video plus poster, overlay, halo breathing, reduced-motion and mobile behaviour) from the live build at commit `feb33a6`.
+- Brand book (`project/README.md`): points to the hero pattern, and records that the hero sits below the fixed 64px header.
+- Decision recorded in `.index/key-decisions.md`.
+- Unchanged: colours, type, wordmarks, tagline, descriptor, marker and the eight disciplines.
+
 ## 2026-10-18 — Motion v1, fixed header, Discipline Ledger (approved by Andries)
 
 - Brand book (`project/README.md`): the Motion section "Light breathes, nothing travels ... No slides, bounces or parallax" is replaced by Motion v1, "light first, travel last": motion tokens, house-lights page changes, staggered one-time reveals, edge-first panel reveals, a gliding nav hairline, press feedback, a fixed solid header, and starfield-only parallax (0.04x scroll, desktop only, never on hero media or content, off under reduced motion). Everything stays still under `prefers-reduced-motion`.

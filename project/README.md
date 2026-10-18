@@ -2,7 +2,7 @@ AN3S is Andries Liebenberg's strategic development and growth practice, establis
 
 ## The key visual, as components
 
-The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference composition. Rebuild it, and every hero, title slide and social tile, from the parts:
+The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference composition. Rebuild it, and every title slide and social tile, from the parts. The website's homepage hero is its own approved pattern (`components/Hero/README.md`): a centred wordmark, tagline, descriptor and two actions over a muted film with a poster, below the fixed header.
 
 1. `Starfield` as the ground.
 2. `GradientText` at the top: "Fueling growth at the intersection of".
@@ -93,9 +93,9 @@ Light first, travel last (Motion v1, approved by Andries 2026-10-18). Light stil
 - Panels light edge first: the neon edge fades in, then the entry price resolves from 25% opacity and 3px blur to full ink once, then rows follow 40ms apart with a 6px rise. Open and close ease over `motion-slow`; closing runs the reverse. No counting tickers.
 - Navigation: one `gradient-neon` hairline glides under the active link (transform only, `motion-slow`). It is the only element that travels sideways.
 - Hover and press: the `glow-cyan` edge answers hover with at most a 2px lift; buttons press to 0.98 scale for 60ms.
-- Header: fixed, `deep-space` at 82% with a 12px backdrop blur; a `line` hairline appears once the page scrolls past 4px. Set `scroll-padding-top` to the header height plus `space-3` (16px) and pad page content by the header height, so nothing sits under it.
+- Header: fixed, `deep-space` at 82% with a 12px backdrop blur; a `line` hairline appears once the page scrolls past 4px. Set `scroll-padding-top` to the header height plus `space-3` (16px) and pad page content by the header height, so nothing sits under it. This applies to the homepage too: the approved hero sits directly below the 64px header, not under it.
 - Parallax: the starfield layer only, moving at 0.04x scroll (translateY), on desktop only (min-width 1024px and a fine pointer). Never on hero media (image, video, poster), portraits, panels, content or text. No other parallax.
-- Hero media: a muted video loop with a poster image is allowed; it holds on the poster under reduced motion.
+- Hero media: a muted video loop with a poster image is allowed; it holds on the poster under reduced motion. The approved homepage hero (2026-10-18) is documented in `components/Hero/README.md`.
 - Performance: animate transform and opacity only (exceptions: a panel's grid-template-rows on user click, one blur per entry price, once). One-shot IntersectionObserver; the only scroll listeners are the header hairline and the starfield parallax, both passive and frame-throttled. `will-change` on the starfield only.
 - Under `prefers-reduced-motion`, everything is still: no reveals, transitions, breathing or parallax, content is visible at once, and page changes are an instant swap with focus still moved to the H1.
 

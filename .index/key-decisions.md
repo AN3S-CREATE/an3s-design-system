@@ -1,5 +1,8 @@
 # Key decisions
 
+## 2026-10-18 — New homepage hero approved by Andries
+Andries confirmed that the current an3s.info homepage hero (Lovable commit `feb33a6`) is the approved hero. The wordmark is the H1 with one breathing Halo, followed by the tagline in `GradientText`, the descriptor, a supporting line, and the actions WhatsApp Andries and See services. Behind it plays a full-bleed muted arrival film with a poster and a 45% `deep-space` overlay. It holds on the poster under reduced motion. It sits below the fixed 64px header through the shared page-content padding, so the hero is 64px lower than before. Documented in `project/components/Hero/README.md`.
+
 ## 2026-10-18 — Motion v1: light first, travel last (approved by Andries)
 The original rule ("Light breathes, nothing travels ... no slides, bounces or parallax") left an3s.info with hard page cuts and flat reveals. Andries approved a governed motion set: four durations (120/240/420/4000ms), a 60ms stagger, two curves, "house lights" page changes, staggered one-time reveals, edge-first panel reveals, one gliding nav hairline, a 0.98 press, and starfield-only parallax at 0.04x scroll on desktop. Parallax was recommended against and approved explicitly, so it is fenced: starfield layer only, never hero media or content, off on touch and under reduced motion. Recorded as `motion` tokens in `project/tokens.json`; `dist/web/` needs a re-export through `tools/export.mjs` to carry them.
 
