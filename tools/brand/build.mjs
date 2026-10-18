@@ -232,6 +232,8 @@ for (const [path, text] of Object.entries(outputs)) writeFileSync(path, text);
 console.log(`wrote ${Object.keys(outputs).length} SVGs`);
 
 if (!svgOnly) {
+  // The share page uses dist/web/tokens.css; refresh it from project/tokens.json before rendering.
+  execFileSync(process.execPath, [join(ROOT, 'tools', 'export.mjs')], { stdio: 'inherit' });
   renderMark(mark, 180, join(LOGOS, 'an3s-mark-180.png'), C.space);
   renderMark(mark, 512, join(LOGOS, 'an3s-mark-512.png'));
   screenshot(sharePage(wordmark), 1200, 630, join(IMAGERY, 'an3s-share.png'), { transparent: false, wait: 15000 });
