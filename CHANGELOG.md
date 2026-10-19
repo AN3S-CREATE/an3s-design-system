@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-19 — Chaos Gap system (approved by Andries)
+
+- Brand book (`project/README.md`): Chaos Gap layout pattern; Pink asks, cyan answers voice turn-order; Light Cue 3 named motion sequence inside Motion v1; Strata noted.
+- New component READMEs: `project/components/ChaosGap/README.md`, `project/components/Strata/README.md`, `project/components/AskAnswer/README.md`.
+- Tokens (`project/tokens.json`): `social-portrait` 1080px and `social-portrait-h` 1350px.
+- Decision recorded in `.index/key-decisions.md`.
+- Unchanged: homepage hero, colours, type, wordmarks, tagline, descriptor, marker, eight disciplines, Discipline Ledger, AwardWall.
+- Follow-up: run `tools/export.mjs` so `dist/web/` carries the new size tokens. Refusal Register remains pending a separate yes.
+
 ## 2026-10-18 — New homepage hero approved by Andries
 
 - New component pattern: `project/components/Hero/README.md`, documenting the approved an3s.info homepage hero (layout, copy order, muted video plus poster, overlay, halo breathing, reduced-motion and mobile behaviour) from the live build at commit `feb33a6`.
