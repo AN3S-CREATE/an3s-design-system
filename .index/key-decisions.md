@@ -1,5 +1,8 @@
 # Key decisions
 
+## 2026-10-19 — Chaos Gap system (approved by Andries)
+Andries approved the Brand Forge v1 recommendation: Chaos Gap as the recurring layout pattern (gap = 2 × height of the wordmark's "3"; only the decision sits in the gap), Strata as a new quiet proof component (one hairline per year since 2000; cyan Est. 2003 tick; current year pink), Pink asks / cyan answers as the voice turn-order for Ask / Answer surfaces, Light Cue 3 as a named Motion v1 choreography (pink 240ms → dark 120ms → cyan 420ms), and 1080×1350 as the default social size. Documented in `project/components/ChaosGap`, `Strata`, `AskAnswer`, the Motion and Voice sections of `project/README.md`, and size tokens in `project/tokens.json`. Hero, colours, type, wordmark and Discipline Ledger unchanged. Refusal Register and Signed Hour were not approved with this decision.
+
 ## 2026-10-18 — New homepage hero approved by Andries
 Andries confirmed that the current an3s.info homepage hero (Lovable commit `feb33a6`) is the approved hero. The wordmark is the H1 with one breathing Halo, followed by the tagline in `GradientText`, the descriptor, a supporting line, and the actions WhatsApp Andries and See services. Behind it plays a full-bleed muted arrival film with a poster and a 45% `deep-space` overlay. It holds on the poster under reduced motion. It sits below the fixed 64px header through the shared page-content padding, so the hero is 64px lower than before. Documented in `project/components/Hero/README.md`.
 
