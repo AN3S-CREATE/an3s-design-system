@@ -21,6 +21,11 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 - Display lines are UPPERCASE with wide tracking (the `tagline`, `statement`, `label`, `eyebrow`, `service` and `action` styles); keep them under about eight words. Anything longer is sentence case in `heading` and `body`.
 - Service names are Title Case with "&". Use "&" in names and titles, "and" in running sentences. Keep the Oxford comma in "Strategy, Chaos, and Experimental Tech".
 - The tone is confident and compressed: short declaratives, nouns that name the work. The source copy uses no emoji and no exclamation marks; keep it that way.
+- **Pink asks, cyan answers** (voice turn-order, approved 2026-10-19). The wordmark's colour order is the speaking order. On social posts, section openers that use the Chaos Gap pattern, and any surface built as Ask / Answer:
+  - The **pink** line is always a real client question in the client's own words (or one of the approved Concierge starter questions). It sits first.
+  - The **cyan** line is the answer. It must carry (a) an official list price from the approved price sheet and (b) one next step ("Reply YES", "WhatsApp Andries", or the matching priced next offer). An answer with no list price is off-brand.
+  - AN3S never speaks first on these surfaces. First-person "I" is preferred over "we".
+  - Full pattern: `components/AskAnswer/README.md`.
 - The eight disciplines, in this order and spelling: AI Systems & Automation · Business Growth · Web & App Development · Experimental Marketing · Brand Strategy · 3D Virtualization & Events · Sales Leadership · Innovation & Mentorship.
 - Recognition shown on the key visual: Africa CEO Forum Awards · Young Entrepreneur of the Year (YE Awards 2019) · South African Small Business Awards · National Presidential Small & Cooperatives Awards 2016 · EY Entrepreneur Of The Year · The South African Future Trust Awards 2025 · a BusinessDay award (confirm its title before quoting it) · Absa Supplier Development Award · BCX Digital Innovation Awards.
 
@@ -30,11 +35,12 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 - Surfaces: `panel` for anything raised. A panel is defined by its neon edge, not its fill.
 - Type: `ink` for names, headlines and labels; `ink-soft` for body copy and service labels; `ink-muted` for secondary lines and captions.
 - Light: `pink` leads and `cyan` answers, in the wordmark's own order (AN · 3 · S). When two hues share a composition, pink sits left or top and cyan or blue sits right or bottom.
+- On Chaos Gap and Ask / Answer surfaces the same order becomes turn order: pink = the client's ask (left or top), cyan = AN3S's answer (right or bottom). The deep-space gap between them is Chaos (see Chaos Gap).
 - `violet` lives only between pink and blue: gradient midpoints, the halo, nebula light. Never text.
 - `blue` is for panel edges, smoke and the right-hand side of the halo.
 - Coloured words use the glow tints (`pink-glow`, `violet-glow`, `cyan-glow`), which read as emitted light. The saturated `pink` and `cyan` are for strokes, edges and icons.
 - Gradients: `gradient-glow` for type, `gradient-neon` for edges and rules, `gradient-space` for full-bleed backgrounds. Always left to right, pink first.
-- Keep neon scarce. It is light, not paint: an edge, an icon, a few words. Large areas stay `deep-space`.
+- Keep neon scarce. It is light, not paint: an edge, an icon, a few words. Large areas stay `deep-space`. Exception (Ask / Answer only, approved 2026-10-19): a pink-glow client question may run to about 12 words, because the question is the lead. Everywhere else, display lines stay under about eight words.
 - Status: `danger` for errors and destructive actions, `success` for confirmations, as text and icons on `deep-space` or `panel`, or as fills under `on-danger` and `on-success` labels. A status colour always comes with a word or an icon, and never decorates: `danger` sits close to `pink` in lightness.
 - In interfaces, pink leads as the primary colour and cyan follows as the secondary one, both in their glow tints: words in `pink-glow` and `cyan-glow`, fills under `on-glow` labels. Edges, focus rings, blooms and charts keep the saturated `pink`, `cyan`, `blue` and `violet`. Menus and hovers lift onto `nebula`.
 
@@ -52,6 +58,28 @@ The master poster (`assets/Imagery/an3s-key-visual.webp`) is the reference compo
 - Inside panels, divide tiles with `line` hairlines, never boxes within boxes.
 - Form controls (inputs, selects, checkboxes) take a `line-strong` edge, so the edge alone marks the control.
 - Corners: `radius-lg` for panels and image frames, `radius-md` for tabs and buttons, `radius-sm` for code and chips, `radius-full` only for the halo, nodes and round portraits. No square-cornered surfaces.
+
+## Chaos Gap (layout pattern)
+
+Approved by Andries 2026-10-19. Full pattern: `components/ChaosGap/README.md`.
+
+- Every Chaos Gap composition is three columns (desktop) or three stacked bands (mobile): a pink Strategy field, a deep-space gap, a cyan Tech field.
+- **Gap width** = 2 × the height of the wordmark's "3" at the wordmark size used in that composition. (Clear space around the wordmark remains 1 × the height of the "3"; the gap is two of those units.)
+- **Only the reader's decision** may sit in the gap: the recommended offer name, the list price, and "Reply YES" (or the matching one next step). No decoration, no logo, no body copy, no second CTA in the gap.
+- Fields are built from `Panel` (pink tone left / top, blue tone right / bottom), or the AskAnswer pattern. Ground is `Starfield` or `deep-space`.
+- The label of the gap, when shown, is the word **Chaos** in `eyebrow` style, `ink-muted` — the middle word of the tagline, made material.
+
+## Strata
+
+Approved by Andries 2026-10-19. Full pattern: `components/Strata/README.md`.
+
+- A band of hairlines, one per calendar year from 2000 through the current year. 2003 carries a cyan "Est." tick; the current year is the only pink line. Each January exactly one line is appended.
+- Use in section footers, social footers, email signatures and proposal covers — never inside the Chaos Gap.
+- It proves "since 2000" and "Est. 2003." without a statistic or a claim.
+
+## Social sizes
+
+- Default social tile: `social-portrait` × `social-portrait-h` (1080 × 1350, 4:5), approved 2026-10-19. AskAnswer posts use this size unless a platform forces another; turn order stays the same.
 
 ## Light and depth
 
@@ -91,6 +119,7 @@ Light first, travel last (Motion v1, approved by Andries 2026-10-18). Light stil
 - Page changes ("house lights"): the content dims and settles 1% smaller over 180ms, then the new page lights up headline first over 320ms after a 60ms delay. The header, wordmark and starfield never move or re-render. Prefer the View Transitions API; fall back to a keyed fade with the same values. Focus moves to the new page's H1.
 - Reveals: one time per element, opacity plus a 10px rise over `motion-slow`, children in reading order `motion-stagger` apart (at most 8 children, 6 on mobile). Reveal states hide with opacity, never `display`, so nothing shifts.
 - Panels light edge first: the neon edge fades in, then the entry price resolves from 25% opacity and 3px blur to full ink once, then rows follow 40ms apart with a 6px rise. Open and close ease over `motion-slow`; closing runs the reverse. No counting tickers.
+- **Light Cue 3** (named sequence inside Motion v1, approved 2026-10-19): the Chaos Gap reveal and any Ask / Answer entrance. Pink Ask edge up over `motion-base` (240ms, `ease-enter`) → deep-space gap holds dark for `motion-fast` (120ms) → cyan Answer edge up over `motion-slow` (420ms, `ease-enter`). Nothing else may animate before this cue finishes. Playable by a website section, the loader, a reel ending, or (off-site) an event LED wash that follows the same timings. Holds still under `prefers-reduced-motion`. No new motion tokens — Light Cue 3 is a named choreography of the existing ones.
 - Navigation: one `gradient-neon` hairline glides under the active link (transform only, `motion-slow`). It is the only element that travels sideways.
 - Hover and press: the `glow-cyan` edge answers hover with at most a 2px lift; buttons press to 0.98 scale for 60ms.
 - Header: fixed, `deep-space` at 82% with a 12px backdrop blur; a `line` hairline appears once the page scrolls past 4px. Set `scroll-padding-top` to the header height plus `space-3` (16px) and pad page content by the header height, so nothing sits under it. This applies to the homepage too: the approved hero sits directly below the 64px header, not under it.
